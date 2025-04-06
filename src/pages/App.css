@@ -1,0 +1,26 @@
+.nav-button {
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.nav-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.nav2-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit;        /* 부모 텍스트 색상 상속 */
+}
