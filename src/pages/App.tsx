@@ -45,7 +45,7 @@ function AppContent() {
             ) : (
               <>
                 <Link to="/login"><p className="nav-button">로그인</p></Link>
-                <Link to="/signup"><p className='nav-button' style={{ fontWeight: "700" , marginRight:"60px"}}>회원가입</p></Link>
+                <Link to="/signup"><p className='nav-button' style={{ fontWeight: "710" , marginRight:"60px"}}>회원가입</p></Link>
               </>
             )}
           </div>
