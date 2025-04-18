@@ -6,6 +6,8 @@ const loginRouter = require("../routes/login")
 const changePasswordRouter = require('../routes/changepassword')
 const changeNickname = require('../routes/changeNickname')
 
+const writePosts = require("../routes/board")
+
 const app = express()
 app.use(express.json());
 
@@ -16,6 +18,7 @@ app.use(singUpRoutes)
 app.use(loginRouter)
 app.use(changePasswordRouter)
 app.use(changeNickname)
+app.use(writePosts)
 
 app.listen(4000 , () => {
   console.log("서버 실행 중 : http://localhost:4000")

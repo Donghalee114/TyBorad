@@ -1,0 +1,18 @@
+.border-bar {
+  border: 1px solid black;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  padding: 10px;
+  gap: 10px;
+}
+
+.border-bar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

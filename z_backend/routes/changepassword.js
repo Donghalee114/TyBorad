@@ -41,4 +41,44 @@ router.post('/changePassword', async (req ,res)  => {
 }
 });
 
+
+router.post('/deleteAccount', (req , res) => {
+  const { user_id } = req.body;
+
+  try {
+    const query = 'SELECT * FROM users WHERE user_id = ?';
+    db.get(query, [user_id], (err, row) => {
+      if (err) {
+        console.error("데이터베이스 쿼리 오류", err);
+        return res.status(500).json({ message: "데이터베이스 오류" });
+      }
+
+      if (!row) {
+        return res.status(404).json({ message: "사용자를 찾을 수 없습니다." });
+      }
+      const deletePosts = 'DELETE FROM posts WHERE user_id = ?';
+      db.run(deletePosts, [user_id], function (err) {
+        if (err) {
+          console.error("게시글 삭제 오류", err);
+          return res.status(500).json({ message: "게시글 삭제 실패" });
+        }
+
+        const deleteUser = 'DELETE FROM users WHERE user_id = ?';
+        db.run(deleteUser, [user_id], function (err) {
+          if (err) {
+            console.error("유저 삭제 오류", err);
+            return res.status(500).json({ message: "계정 삭제 실패" });
+          }
+
+          return res.status(200).json({ message: "계정이 삭제되었습니다." });
+        });
+      });
+    });
+  } catch (error) {
+    console.error("서버 예외", error);
+    return res.status(500).json({ message: "서버 에러" });
+  }
+});
+
+
 module.exports = router;

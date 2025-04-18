@@ -126,67 +126,102 @@ function Singup({accounts , setAccounts} : Props) {
  
 
   return(
-   
-
-    <div style={{border : "solid black 1px",  width:"70%", margin:"auto" , marginTop:"100px" }}> 
-      <p>회원가입</p>
-      <input id ="ID" type="text" placeholder="ID" value={newId} onChange={(e) => setNewId(e.target.value)} readOnly={isIdReadonly}/>
-      <button onClick={handleCheckId}>아이디 중복 확인</button><br/><br/>
-
-  <div style={{ position: "relative", display: "inline-block" }}>
-    <input
-    type={showPassword ? "text" : "password"}
-    placeholder="비밀번호"
-    value={newPassword}
-    onChange={(e) => setNewPassword(e.target.value)}
-    style={{ paddingRight: "20px" }}
-  />
-  <input
-    type="checkbox"
-    checked={showPassword}
-    onChange={toggleShowPassword}
-    style={{
-      position: "absolute",
-      right: "5px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  />
-</div>
-
-<div style={{ position: "relative", display: "inline-block" }}>
-    <input
-    type={showCheckPassword ? "text" : "password"}
-    placeholder="비밀번호 확인"
-    value={checkPassword}
-    onChange={(e) => setCheckPassword(e.target.value)}
-    style={{ paddingRight: "20px" }}
+    <div style={{
+      border: "1px solid #ccc",
+      width: "430px",
+      margin: "100px auto",
+      padding: "40px",
+      borderRadius: "10px",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+      backgroundColor: "#fff"
+    }}>
+      <h2 style={{ textAlign: "center", marginBottom: "30px" }}>회원가입</h2>
     
-  />
-  <input
-    type="checkbox"
-    checked={showCheckPassword}
-    onChange={toggleCheckShowPassword}
-    style={{
-      position: "absolute",
-      right: "5px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  />
-
-<br/><br/>
-<input
-  type="text"
-  placeholder="닉네임"
-  value={nickname}
-  onChange={(e) => setNickname(e.target.value)}
-/>
-</div>
-
-      <button onClick={() => resetRes()}>정보 다시 입력하기</button><br/><br/>
-      <button onClick={handleSignip}>회원가입</button>  
-
+      {/* ID 입력 */}
+      <label>ID:</label>
+      <div style={{ marginBottom: "15px",marginTop : "10px" , display : "flex", gap:"10px"}}>
+        
+        <input
+          type="text"
+          placeholder="ID"
+          value={newId}
+          onChange={(e) => setNewId(e.target.value)}
+          readOnly={isIdReadonly}
+          style={{
+            flex: 1,
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc"
+          }}
+        />
+        <button onClick={handleCheckId} style={{ width : "130px" , padding: "10px", backgroundColor: "#f5f5f5", border: "1px solid #ccc", borderRadius: "5px",  cursor : "pointer"}}>아이디 중복 확인</button>
+      </div>
+    
+      {/* 비밀번호 입력 */}
+      <label>Password:</label>
+      <div style={{ marginBottom: "15px", marginTop: "10px", position: "relative" }}>
+  
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="비밀번호"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          style={{ width: "90%", padding: "10px", paddingRight: "30px", borderRadius: "5px", border: "1px solid #ccc" }}
+        />
+        <input
+          type="checkbox"
+          checked={showPassword}
+          onChange={toggleShowPassword}
+          style={{
+            position: "absolute",
+            right: "10px",
+            top: "50%",
+            transform: "translateY(-50%)"
+          }}
+        />
+      </div>
+    
+      {/* 비밀번호 확인 */}
+      <div style={{ marginBottom: "15px",position: "relative" }}>
+ 
+        <input
+          type={showCheckPassword ? "text" : "password"}
+          placeholder="비밀번호 확인"
+          value={checkPassword}
+          onChange={(e) => setCheckPassword(e.target.value)}
+          style={{ width: "90%", padding: "10px", paddingRight: "30px", borderRadius: "5px", border: "1px solid #ccc" }}
+        />
+        <input
+          type="checkbox"
+          checked={showCheckPassword}
+          onChange={toggleCheckShowPassword}
+          style={{
+            position: "absolute",
+            right: "10px",
+            top: "50%",
+            transform: "translateY(-50%)"
+          }}
+        />
+      </div>
+    
+      {/* 닉네임 */}
+      <label>NickName:</label>
+      <div style={{ marginTop : "10px",marginBottom: "20px" }}>
+        <input
+          type="text"
+          placeholder="닉네임"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          style={{ width: "95%", padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+        />
+      </div>
+    
+      {/* 버튼 */}
+      <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+      < button onClick={handleSignip} style={{ width : "80%" ,  padding: "10px", backgroundColor: "#4caf50", color: "white", border: "none", borderRadius: "5px" , cursor : "pointer"}}>회원가입</button>
+        <button onClick={resetRes} style={{ width : "50%" , padding: "10px", backgroundColor: "#f5f5f5", border: "1px solid #ccc", borderRadius: "5px",  cursor : "pointer"}}>정보 다시 입력하기</button>
+      
+      </div>
     </div>
     
   )

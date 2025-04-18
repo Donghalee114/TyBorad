@@ -8,3 +8,16 @@ hr {
 .InMypage{
   padding: 50px;
 }
+
+.nav-bar {
+  padding :  10px;
+  border: 1px solid black;
+  margin-bottom: 10px;;
+  cursor: pointer; 
+  transition: 2s;
+}
+
+.nav-bar:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

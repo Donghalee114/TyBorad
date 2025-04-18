@@ -9,6 +9,15 @@ db.serialize(() => {
     password TEXT
     )
   `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS posts (
+      id TEXT PRIMARY KEY,
+      user_id TEXT,
+      title TEXT,
+      content TEXT
+    )
+  `);
 });
 
 

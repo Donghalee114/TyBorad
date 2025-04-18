@@ -5,6 +5,9 @@ import Login from './login';
 import Singup from './Singup';
 import MainPage from './mainPage';
 import MyPage from './MyPage';
+import Write from './writeBorad';
+import PostDetailPage from './PostDetailPage';
+import EditPost from './editPostPage';
 
 type Account = {
   ID : string;
@@ -35,13 +38,14 @@ function AppContent() {
           <div style={{ display: "flex", gap: "15px" }}>
             {loggedInUser ? (
               <>
+              <p onClick={() => navigate("/write")} className="nav-button" >새 글 쓰기</p>
                 <p onClick={() => navigate("/mypage")} className="nav-button">내정보</p>
                 <Link to = "/"><p onClick={() =>{ setLoggedInUser(null) ; localStorage.removeItem("loggedInUser"); localStorage.removeItem("nickname"); localStorage.removeItem("accounts")}} className="nav-button" style={{ fontWeight: "700"  , marginRight:"60px"}}>로그아웃</p></Link>
               </>
             ) : (
               <>
                 <Link to="/login"><p className="nav-button">로그인</p></Link>
-                <Link to="/signup"><p className='nav-button' style={{ fontWeight: "700" , marginRight:"60px"}}>가입</p></Link>
+                <Link to="/signup"><p className='nav-button' style={{ fontWeight: "700" , marginRight:"60px"}}>회원가입</p></Link>
               </>
             )}
           </div>
@@ -52,7 +56,10 @@ function AppContent() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login accounts={accounts} setLoggedInUser={setLoggedInUser} setNickname={setNickname} />} />
         <Route path="/signup" element={<Singup accounts={accounts} setAccounts={setAccounts} />} />
-        <Route path="/mypage" element={<MyPage loggedInUser = {loggedInUser} setNickname = {setNickname}/>} />
+        <Route path="/mypage" element={<MyPage loggedInUser = {loggedInUser} setLoggedInUser = {setLoggedInUser} setNickname = {setNickname}/>} />
+        <Route path="/Write" element={<Write></Write>}></Route>
+        <Route path="/posts/:id" element={<PostDetailPage />} />
+        <Route path="/Editpost/:id" element ={<EditPost />} />
       </Routes>
     </>
   );

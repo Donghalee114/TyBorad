@@ -2,6 +2,7 @@ import { useState } from "react"
 import { toast,ToastContainer } from "react-toastify";
 import { BrowserRouter as router , Route , Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import './login.css'
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,9 +17,6 @@ type Props = {
   setLoggedInUser: (userId: string) => void
   setNickname: (nickname: string) => void; 
 }
-
-
-
 
 
 function Login({accounts , setLoggedInUser , setNickname} : Props){
@@ -45,6 +43,7 @@ function Login({accounts , setLoggedInUser , setNickname} : Props){
           password: userPassword,
         }),
       });
+
       const data = await res.json()
 
       if(res.ok) {
@@ -67,39 +66,79 @@ function Login({accounts , setLoggedInUser , setNickname} : Props){
 
 
   return(
-    <div>
-      <ToastContainer position="top-center" autoClose={2000} />
-      <div className="LoginForm" style={{border:"solid black 1px" , width: "30%", margin: "auto", marginTop : "100px" }}>
-      <p>로그인</p>
-      <input placeholder="ID" type="text" style={{width: "100px"}} value={userId} onChange={(e) => setUserId(e.target.value)}></input>
+<div style={{ display: "flex", justifyContent: "center", marginTop: "100px" }}>
+  <div style={{
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    padding: "40px",
+    width: "430px",
+    textAlign: "center",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    backgroundColor: "#fff"
+  }}>
+    <h2 style={{ marginBottom: "20px" }}>로그인</h2>
 
+    {/* ID 입력 */}
+    <div style={{ textAlign: "left", marginBottom: "10px" }}>
+      <label>ID:</label>
+      <input
+        type="text"
+        placeholder="ID"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+        style={{
+          width: "93%",
+          padding: "10px",
+          borderRadius: "5px",
+          border: "1px solid #ccc",
+          marginTop: "5px"
+        }}
+      />
+    </div>
 
-  <div style={{ position: "relative", display: "inline-block" }}>
-    <input
-    type={showPassword ? "text" : "password"}
-    placeholder="비밀번호"
-    value={userPassword}
-    onChange={(e) => setUserPassword(e.target.value)}
-    style={{ paddingRight: "20px" }}
-  />
-  <input
-    type="checkbox"
-    checked={showPassword}
-    onChange={toggleShowPassword}
-    style={{
-      position: "absolute",
-      right: "5px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  />
+    {/* PW 입력 */}
+    <div style={{ textAlign: "left", marginBottom: "20px" }}>
+      <label>Password:</label>
+      <input
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+        value={userPassword}
+        onChange={(e) => setUserPassword(e.target.value)}
+        style={{
+          width: "93%",
+          padding: "10px",
+          borderRadius: "5px",
+          border: "1px solid #ccc",
+          marginTop: "5px"
+        }}
+      />
+    </div>
+
+    {/* 로그인 버튼 */}
+    <button
+      onClick={handleLogin}
+      className="login-button"
+      style={{
+        width: "100%",
+        padding: "10px",
+        borderRadius: "5px",
+        backgroundColor: "#4caf50",
+        color: "white",
+        border: "none",
+        marginBottom: "15px",
+        cursor: "pointer",
+      }}
+    >
+      로그인
+    </button>
+
+    {/* 회원가입 링크 */}
+    <Link to="/signup" style={{ textDecoration: "none", color: "#007bff" }}>
+      아이디가 없으신가요?
+    </Link>
+  </div>
 </div>
 
-      <button onClick={handleLogin}>로그인</button>
-      <Link to = "/signup"><p style={{color : "black"}}>아이디가 없으신가요?</p></Link>
-      </div>
-    </div>
   )}
-
 
 export default Login;

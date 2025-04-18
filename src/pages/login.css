@@ -1,8 +1,11 @@
-body {
-  background-color: #f6f5f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  
+.login-button {
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.login-button:hover {
+  background-color: black;
+  color: white;
 }
